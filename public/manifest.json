@@ -1,7 +1,7 @@
 {
-	"name": "Ahey",
-	"short_name": "Ahey",
-	"description": "A video chat app for the web.",
+	"name": "Klerum",
+	"short_name": "Klerum",
+	"description": "Приложение для видеочата в Интернете.",
 	"icons": [
 		{
 			"src": "icon.png",
