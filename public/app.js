@@ -108,7 +108,7 @@ const App = Vue.createApp({
 					this[replaceTrackMethod](newTrack);
 					this[enabledKey] = true;
 				} catch {
-					this.setToast(`Failed to enable ${kind}`);
+					this.setToast(`Не удалось включить ${kind}`);
 				}
 			}
 		},
@@ -127,9 +127,9 @@ const App = Vue.createApp({
 				}
 				const newTrack = newStream[getTracks]()[0];
 				this[replaceTrackMethod](newTrack);
-				this.setToast(`${kind.charAt(0).toUpperCase() + kind.slice(1)} device changed successfully`, "success");
+				this.setToast(`${kind.charAt(0).toUpperCase() + kind.slice(1)} устройство успешно изменено`, "success");
 			} catch {
-				this.setToast(`Failed to switch ${kind} device`);
+				this.setToast(`Не удалось переключить устройство ${kind}`);
 			}
 		},
 		replaceMediaTrack(newTrack, kind) {
@@ -262,7 +262,7 @@ const App = Vue.createApp({
 				// Check if stream has video tracks
 				if (!screenStream.getVideoTracks().length) {
 					screenStream.getTracks().forEach((track) => track.stop());
-					this.setToast("No video track found in screen share");
+					this.setToast("Видеодорожка не найдена в screen share");
 					return;
 				}
 
@@ -278,17 +278,17 @@ const App = Vue.createApp({
 				const screenVideoTrack = screenStream.getVideoTracks()[0];
 				this.replaceVideoTrack(screenVideoTrack);
 
-				this.setToast("Screen sharing started", "success");
+				this.setToast("Запущена демострация экрана", "success");
 			} catch (error) {
 				console.error("Error starting screen share:", error);
 				if (error.name === "NotAllowedError") {
-					this.setToast("Screen sharing permission denied");
+					this.setToast("Отказано в разрешении на демонстрацию экрана");
 				} else if (error.name === "NotSupportedError") {
-					this.setToast("Screen sharing not supported in this browser");
+					this.setToast("Демострация экрана в этом браузере не поддерживается");
 				} else if (error.name === "AbortError") {
 					// User cancelled the screen share dialog
 				} else {
-					this.setToast("Failed to start screen sharing");
+					this.setToast("Не удалось запустить демострацию экрана");
 				}
 			}
 		},
@@ -313,10 +313,10 @@ const App = Vue.createApp({
 				const newVideoTrack = newVideoStream.getVideoTracks()[0];
 				this.replaceVideoTrack(newVideoTrack);
 
-				this.setToast("Screen sharing stopped", "success");
+				this.setToast("Демострация экрана прекращена", "success");
 			} catch (error) {
 				console.error("Error stopping screen share:", error);
-				this.setToast("Failed to stop screen sharing");
+				this.setToast("Не удалось остановить демострацию экрана");
 			}
 		},
 
@@ -354,7 +354,7 @@ const App = Vue.createApp({
 		},
 		copyURL() {
 			navigator.clipboard.writeText(`${window.location.origin}/${this.channelId}`).then(
-				() => this.setToast("Channel URL copied 👍", "success"),
+				() => this.setToast("Скопирован URL-адрес канала 👍", "success"),
 				() => console.error("Unable to copy channel URL")
 			);
 		},
@@ -409,7 +409,7 @@ const App = Vue.createApp({
 			this.cleanupScreenShare();
 
 			// Show toast
-			this.setToast("Call ended", "success");
+			this.setToast("Звонок завершен", "success");
 
 			// Re-initialize pre-call preview
 			this.getPreCallMedia();
@@ -577,7 +577,7 @@ const App = Vue.createApp({
 				if (videoElem) {
 					videoElem.srcObject = this.localMediaStream;
 				}
-				this.setToast("Unable to access camera/mic");
+				this.setToast("Не удается получить доступ к камере/микрофону");
 			}
 		},
 		requestFullscreen(videoElem) {
