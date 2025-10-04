@@ -10,6 +10,12 @@ window.ICE_SERVERS = [
 	{ urls: "stun:stun4.l.google.com:19302" },
 	{ urls: "stun:stun.relay.metered.ca:80" },
 	{ urls: "stun:turn.ahey.net:3478" },
+	{ urls: "stun:freestun.net:3478" },
+	{
+		urls: "stun:stun.cloudflare.com:3478",
+		username: "4cec22a175eafb5ae775d8cab0ab652b158c7f160cd21f38e9cd8e6526a03582bde1d6c41e962918831a9c0a66a567f6b413fb27e5f94848f5bc51b1ea4dca32",
+		credential: "aba9b169546eb6dcc7bfb1cdf34544cf95b5161d602e3b5fa7c8342b2e9802fb",
+	},
 
 	// TURN servers are needed as a fallback relay server when direct peer-to-peer communication isn’t possible.
 	// It relays data between peers, ensuring connectivity even in restrictive network conditions.
@@ -33,6 +39,7 @@ window.ICE_SERVERS = [
 		username: "000000002067721570",
 		credential: "e2TIZZpxF5OGyXHwyhfcykdBySU=",
 	},
+	{ urls: "turn:freestun.net:3478", username: 'free', credential: 'free' },
 ];
 
 // Export for use in other modules
