@@ -338,8 +338,8 @@ const App = Vue.createApp({
 		},
 
 		initiateCall() {
-			if (!this.channelId) return alert("Invalid channel id");
-			if (!this.name) return alert("Please enter your name");
+			if (!this.channelId) return alert("Неверный ID канала");
+			if (!this.name) return alert("Пожалуйста, введите свое имя");
 			this.callInitiated = true;
 			this.showExtraControls - false;
 			window.initiateCall();
@@ -430,13 +430,11 @@ const App = Vue.createApp({
 		},
 		formatDate(dateString) {
 			const date = new Date(dateString);
-			const hours = date.getHours() > 12 ? date.getHours() - 12 : date.getHours();
+			const hours = date.getHours();
 			return (
 				(hours < 10 ? "0" + hours : hours) +
 				":" +
-				(date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes()) +
-				" " +
-				(date.getHours() >= 12 ? "PM" : "AM")
+				(date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes())
 			);
 		},
 		sanitizeString(str) {
